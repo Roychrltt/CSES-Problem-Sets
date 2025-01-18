@@ -1,16 +1,20 @@
 #include <iostream>
-#include <vector>
-#include <unordered_map>
-#include <algorithm>
-#include <string>
+#include <cmath>
 
-
-int main()
-{
-	std::vector<int> v = {};
-	int ans = f(v);
-	std::cout << ans << std::endl;
-	return 0;
+void solve(int n, int src, int aux, int dest) {
+    if (n == 1) {
+        std::cout << src << " " << dest << std::endl;
+        return;
+    }
+    solve(n - 1, src, dest, aux);
+    std::cout << src << " " << dest << std::endl;
+    solve(n - 1, aux, src, dest);
 }
-// runtime beats %
-// memory beats %
+
+int main() {
+    int n;
+    std::cin >> n;
+    std::cout << (1 << n) - 1 << std::endl;
+    solve(n, 1, 2, 3);
+    return 0;
+}
