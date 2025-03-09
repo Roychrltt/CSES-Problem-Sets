@@ -9,11 +9,9 @@ int main()
 	std::vector<std::string> v(8);
 	std::vector<int> col(8), diag1(15), diag2(15); 
 	for (int i = 0; i < 8; i++)
-	{
 		std::cin >> v[i];	
-	}
-	int ans = 0;
 
+	int ans = 0;
 	std::function<void(int)> dfs = [&](int r)
 	{
 		if (r == 8)
