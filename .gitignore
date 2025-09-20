@@ -3,3 +3,5 @@ a.out
 *.o
 *.txt
 *input*
+*output*
+*test*
