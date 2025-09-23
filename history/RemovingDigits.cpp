@@ -10,10 +10,10 @@ int main()
 	std::cout.tie(0);
 	int n;
 	std::cin >> n;
-	std::vector<int> dp(n + 1, INT_MAX);
+	std::vector<long long int> dp(n + 1, INT_MAX);
 	dp[n] = 0;
 	for (int i = 0; i < n; i++)
-		dp[i][1] = INT_MAX;
+		dp[i] = INT_MAX;
 	for (int i = n; i >= 0; i--)
 	{
 		int tmp = i;
@@ -21,7 +21,7 @@ int main()
 		{
 			int d = tmp % 10;
 			tmp /= 10;
-			if (i + d <= n) dp[i] = std::min(dp[i], dp[i + d] + 1);
+			if (i - d >= 0) dp[i - d] = std::min(dp[i - d], dp[i] + 1);
 		}
 	}
 	std::cout << dp[0] << std::endl;
