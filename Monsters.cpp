@@ -11,30 +11,29 @@ int main()
 	int dirs[4][2] = {{0, -1}, {0, 1}, {-1, 0}, {1, 0}};
 	int n, m;
 	std::cin >> n >> m;
-	int xa, ya, xb, yb;
+	int xa, ya;
 	std::vector<std::string> v(n);
+	std::queue<std::pair<int, int>> q;
+	std::queue<std::pair<int, int>> qm;
 	for (int i = 0; i < n; i++)
 	{
 		std::cin >> v[i];
 		for (int j = 0; j < m; j++)
 		{
-			if (v[i][j] == 'A')
+			if (v[i][j] == 'M')
+			{
+				qm.push({i, j});
+				v[i][j] = '0';
+			}
+			else if (v[i][j] == 'A')
 			{
 				xa = i;
 				ya = j;
 			}
-			else if (v[i][j] == 'B')
-			{
-				xb = i;
-				yb = j;
-			}
 		}
 	}
-	std::queue<std::pair<int, int>> q;
-	q.push({xa, ya});
-	v[xa][ya] = '#';
-	v[xb][yb] = '.';
-	while (!q.empty())
+	v[xa][ya] = '.';
+	while (!qm.empty())
 	{
 		auto [x, y] = q.front();
 		q.pop();
