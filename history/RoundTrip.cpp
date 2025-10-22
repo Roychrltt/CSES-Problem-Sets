@@ -17,8 +17,8 @@ int main()
 	std::cin >> n >> m;
 	g.assign(n + 1, {});
 	vis.assign(n + 1, -1);
-	auto dfs = [&](this auto&& dfs, int node, int parent)
-	{
+		std::function<int(int, int)> dfs = [&](int node, int parent)
+		{
 		if (vis[node] != -1)
 		{
 			start_node = node;
